@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    <template id="tem">
+       <div>
+                <Com1 ></Com1>
+       </div>
+    </template>
+
+    <template id="com">     
+              <div @click="upevent">
+                    子组件
+              </div>
+    </template>
+</body>
+<script>
+    var dataC = new Vue()
+
+    var vm = new Vue({
+        el: "#app",
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            age: 234
+        },
+        mounted() {
+
+            dataC.$on("updata", function(data) {
+                console.log(data)
+            })
+        },
+
+
+
+        components: {
+            Com1: {
+                template: "#com",
+                props: {
+                    name: {
+                        type: String
+                    },
+                    age: {
+                        type: Number,
+                        // required: true
+                    }
+                },
+                data() {
+                    return {
+                        middle: "middle"
+                    }
+                },
+                methods: {
+                    upevent() {
+                        dataC.$emit("updata", this.middle)
+                    }
+                },
+                mounted() {
+                    var _this = this
+                    setTimeout(function() {
+                        dataC.$emit("updata", _this.middle)
+                    }, 1000)
+                    console.log(_this.$parent)
+                    console.log(_this.$children)
+                }
+
+            }
+
+        }
+    })
+</script>
+
+</html>

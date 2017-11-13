@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+    <link rel="stylesheet" type="" href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+    <style>
+        .default {
+            opacity: 0.5
+        }
+        
+        .fade-enter,
+        .fade-leave-to {
+            /*opacity: 0;*/
+            color: aqua
+        }
+        
+        .fade-enter-active {
+            transition: all 2s ease;
+            /*animation: fadein 2s*/
+            animation: bounce 5s
+        }
+        
+        .fade-enter-to,
+        .fade-leave {
+            /*opacity: 0.5;*/
+        }
+        
+        .fade-leave-active {
+            transition: all 2s ease;
+            /*animation: fadeout 2s*/
+            animation: bounce 5s
+        }
+        
+        @keyframes fadein {
+            0% {
+                opacity: 0
+            }
+            100% {
+                opacity: 0.5
+            }
+        }
+        
+        @keyframes fadeout {
+            0% {
+                opacity: 0.5
+            }
+            100% {
+                opacity: 0
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <div id="app2">
+
+    </div>
+    <template id="tem">
+        <div>
+            <transition name="fade" type="transition">
+                <div v-if="state" class="default">元素动画</div>
+            </transition>
+            <!--<transition enter-active-class="animated bounce" leave-active-class="animated bounce">
+                <div v-if="state" class="default">元素动画</div>
+            </transition>-->
+           <button @click="fn">点击</button>
+        </div>
+      
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            state: true,
+            arr: []
+        },
+        methods: {
+            fn() {
+                this.state = !this.state
+            }
+        }
+    })
+</script>
+
+</html>

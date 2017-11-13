@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+    <div id="app2">
+
+    </div>
+    <template id="tem">
+        <div>
+            <Com1 :age="age"></Com1>
+            <!--<div>{{name}}</div>-->
+        </div>
+            
+    </template>
+    <!--<template id="tem2">
+        <Com1></Com1>
+    </template>-->
+
+    <template id="com">  
+        <div>
+        <div>{{name}}</div>
+        {{age}}
+        </div>
+        
+    </template>
+</body>
+<script>
+    // var com1 = {
+    //     template: "#com"
+    // }
+
+    var vm = new Vue({
+            el: "#app",
+            template: "#tem",
+            data: {
+                age: "13"
+            },
+            components: {
+                Com1: {
+                    template: "#com",
+                    // props: ["age"],
+                    data() {
+                        return {
+                            name: "zhangsan"
+                        }
+                    }
+                }
+
+            }
+        })
+        // var vm = new Vue({
+        //     el: "#app2",
+
+    //     template: "#tem2",
+    //     data: {
+
+    //     }
+    // })
+</script>
+
+</html>

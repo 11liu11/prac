@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <template id="tem">
+        <ul>
+            <!--<li v-for="(i,index) in evenNumbers" :key="i">
+                {{i}}-{{index}}
+            </li> -->
+           <li v-for="(i,index) in watchdata" :key="i">
+                {{i}}-{{index}}
+            </li> 
+            <li v-for="(i,index) in watchdata2" :key="i">
+                {{i}}-{{index}}
+            </li> 
+        </ul>
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            list: [
+                1, 2, 3, 4, 5
+            ],
+            arr: [
+                5, 6, 7, 8
+            ],
+            // evenNumbers: ""
+            watchdata: "",
+            watchdata2: ""
+        },
+        computed: {
+            // evenNumbers: function() {
+            //     return this.list.concat(this.arr)
+            // }
+            evenNumbers: {
+                get() {
+                    return this.list + this.arr
+                },
+                set(val) {
+                    this.list = val
+                }
+            },
+            // alldata() {
+            //     return this.list
+            // }
+        },
+        watch: {
+            list() {
+                this.watchdata = this.list
+                this.watchdata2 = this.list
+            }
+        },
+        // mounted() {
+        //     // this.list.push(7)
+        //     // this.evenNumbers = this.list + this.arr
+        // }
+    })
+
+    setTimeout(function() {
+        // vm.list = [1, 2, 6, 4, 7]
+        // vm.list[5] = 6
+        // vm.$set(vm.list, "3", 9)
+        vm.list.push(6)
+        vm.evenNumbers = [1, 2]
+        console.log(vm.list)
+    }, 1000)
+</script>
+
+</html>

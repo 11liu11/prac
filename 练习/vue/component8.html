@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+    <div id="app1">
+
+    </div>
+    <!--<template id="tem">
+        <Com1>
+            <p>{{name}}</p>
+            <p>周日了</p>
+        </Com1>
+    </template>-->
+    <template id="tem1">
+        <Com1>
+            <!--<template scope="props">
+                 <div scope="props">{{props.age}}</div>
+            </template>-->
+    <div slot="a">天气真好</div>
+    <div>天气真好</div>
+
+    </Com1>
+    </template>
+    <template id="com">  
+        <div>
+            <!--<slot :age="name"></slot>-->
+            <slot name="a"></slot>
+            <slot name="b"></slot>
+            <slot></slot>
+            <section>
+                固定内容
+            </section>
+        </div>
+    </template>
+</body>
+<script>
+    Vue.component("Com1", {
+            template: "#com",
+            data() {
+                return {
+                    name: 2
+                }
+            }
+        })
+        // var vm = new Vue({
+        //     el: "#app",
+        //     template: "#tem",
+        //     data: {
+        //         name: 3
+        //     }
+        // })
+    var vm1 = new Vue({
+        el: "#app1",
+        template: "#tem1",
+        data: {
+            name: 1
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <div id="app2">
+
+    </div>
+    <template id="tem">
+        <ul @click.self=fnn() style="height:100px;background:red">
+         <!--<li @click.once="fn($event)" style="background:green">点击</li>-->
+         <!--<li  style="background:green">点击</li>-->
+         <li @click.middle="fn($event)" style="background:green">点击</li>
+         <!--<input type="text" name="" value="" @keyup.enter="fn($event)">-->
+         <li @click="send">派发</li>
+        </ul>
+    </template>
+</body>
+<script>
+    var vmdata = new Vue()
+
+
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            name: "1222"
+        },
+        methods: {
+            fn(e) {
+                console.log(e)
+            },
+            fnn() {
+                console.log(222)
+            },
+            send() {
+                console.log(122)
+                vmdata.$emit("updata", this.name)
+            }
+        },
+        mounted() {
+            // vmdata.$on("updata", function(data) {
+            //     console.log(data)
+            // })
+        }
+    })
+    var vm2 = new Vue({
+        el: "#app2",
+        mounted() {
+            console.log(22222)
+            vmdata.$on("updata", function(data) {
+                console.log(data)
+            })
+        }
+    })
+</script>
+
+</html>

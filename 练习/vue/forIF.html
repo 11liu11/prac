@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <template id="tem">
+        <ul>
+            
+                 <li v-for="i in list">{{i}}</li>
+           
+
+    </ul>
+    <!--<div>
+            <div v-for="i in listObj">
+                <p>{{i.id}}</p>
+            <p>{{i.name}}</p>
+            </div>
+    </div>-->
+    <!--<div>
+         <div v-if="state">
+         <input type="text" name="" v-model="data1" key="1">
+    </div>
+       <div v-else>
+         <input type="text" name=""  v-model="data2" key="2">
+    </div>
+    </div>-->
+
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        // template: "<span>{{name}}</span>",
+        template: "#tem",
+        data: {
+            name: "123",
+            age: {
+                a: 1,
+                b: "sdfsd"
+            },
+            list: [
+                1, 2, 3, 4
+            ],
+            state: true,
+            data2: 12,
+            data1: 22,
+            listObj: [{
+                id: 1,
+                name: "zhangsan"
+            }, {
+                id: 2,
+                name: "wangwu"
+            }, {
+                id: 3,
+                name: "lisi"
+            }]
+        },
+        methods: {
+            fn() {
+                // this.list = [11, 22, 91, 44]
+            }
+        }
+    })
+
+    setTimeout(function() {
+        vm.list[2] = 9
+        vm.$set(vm.list, "2", 9)
+            // vm.state = false
+            // vm.fn()
+    }, 1000)
+</script>
+
+</html>

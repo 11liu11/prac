@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+    <link rel="stylesheet" type="" href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <style>
+        .fade-enter-active {
+            animation: fadeIn 1s
+        }
+        
+        .fade-leave-active {
+            animation: fadeOut 1s
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+
+    <template id="tem">
+        <div>
+           
+           <transition-group name="fade">
+            <span v-for="i in arr" :key="i">{{i}}</span>
+           </transition-group>
+           <button @click="fn">点击</button>
+        </div>
+      
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            state: true,
+            arr: [1, 2, 3, 4]
+        },
+        methods: {
+            fn() {
+                this.state = !this.state
+            },
+
+        },
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <template id="tem">
+        <ul>
+            <li v-for="(i,index) in evenNumbers" :key="i">
+                {{i}}-{{index}}
+            </li> 
+            <!--<li v-for="i in 10">
+                {{i}}
+            </li>-->
+        </ul>
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            list: [
+                1, 2, 3, 4, 5
+            ],
+        },
+        computed: {
+            evenNumbers: function() {
+                return this.list.filter(function(number) {
+                    return number % 2 === 0
+                })
+            }
+
+        },
+        mounted() {
+            // this.list.push(7)
+        }
+
+    })
+
+    setTimeout(function() {
+        // vm.list = [1, 2, 6, 4, 7]
+        // vm.list[5] = 6
+        // vm.$set(vm.list, "3", 9)
+        // vm.list.push(6)
+
+        // vm.list.map(function(i) {
+        //     return i++
+        // })
+        // console.log(vm.list)
+        // evenNumbers: function() {
+        //     return this.numbers.filter(function(number) {
+        //         return number % 2 === 0
+        //     })
+        // }
+
+    }, 1000)
+</script>
+
+</html>

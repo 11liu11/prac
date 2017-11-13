@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+    <div id="app2">
+
+    </div>
+    <template id="tem">
+        <ul>
+                <Com1 is="li" v-for="(i,index) in list"  :key="index">{{i}}</Com1>
+        </ul>
+    </template>
+
+    <template id="com">  
+       
+              <div>{{i}}</div>
+    
+    </template>
+</body>
+<script>
+    // var com1 = {
+    //     template: "#com"
+    // }
+
+    var vm = new Vue({
+        el: "#app",
+        template: "#tem",
+        data: {
+            list: [
+                1, 2, 3, 4
+            ]
+        },
+        components: {
+            Com1: {
+                template: "#com",
+                props: ["i"],
+
+            }
+
+        }
+    })
+</script>
+
+</html>

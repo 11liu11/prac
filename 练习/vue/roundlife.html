@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+    <template id="tem">
+        <div>
+<span>{{age.b}}</span>
+         <button type="" @click="fn">点击</button>
+        </div>
+
+     
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        // template: "<span>{{name}}</span>",
+        template: "#tem",
+        data: {
+            name: "123",
+            age: {
+                a: 1,
+                b: "sdfsd"
+            }
+        },
+        beforeCreate() {
+            console.log(this)
+            console.log("beforeCreate")
+        },
+        created() {
+
+            console.log(this)
+            console.log("created")
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {
+            console.log("mounted")
+        },
+        beforeDestroy() {
+            console.log("beforeDestroy")
+        },
+        destroyed() {
+            console.log("destroyed")
+        },
+        beforeUpdate() {
+            console.log("beforeUpdate")
+        },
+        updated() {
+            console.log("updated")
+        },
+        methods: {
+            fn() {
+                console.log(2222)
+            }
+        }
+
+    })
+
+    console.log(vm)
+    setTimeout(function() {
+        // vm.name = 1234
+        // vm.age.b= "fsdf"
+        vm.fn()
+        vm.$destroy()
+            // vm.fn()
+            // console.log(vm.$data.name = "sdfsdfds")
+        console.log(vm.$data.age.b = "sdfsdfds")
+    }, 1000)
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+        <span>{{name}}</span>
+
+    </div>
+    <template id="tem">
+        <!--<div :class="classname">-->
+        <div v-bind:class="classname">
+
+       <!--<span v-once>{{name+1}}</span>-->
+       <span>{{age.b}}</span>
+         <button type="" @click="fn">点击</button>
+        </div>
+
+
+
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        // template: "<span>{{name}}</span>",
+        template: "#tem",
+        data: {
+            name: "123",
+            age: {
+                a: 1,
+
+            },
+            classname: "aa"
+        },
+        methods: {
+            fn: function() {
+                console.log(222)
+            }
+        }
+
+
+    })
+
+    // console.log(vm)
+    // vm.$data.age.b = "sdfsdfds"
+    // vm.$set(vm.$data.age, "b", "sdfsdfds")
+    setTimeout(function() {
+        vm.name = 1234
+        vm.$set(vm.age, "b", "sfsf")
+            // vm.age.b = "fsdf"
+            // console.log(vm.$data.name = "sdfsdfds")
+            // console.log(vm.$data.age.b = "sdfsdfds")
+    }, 1000)
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    <template id="tem">
+        <Com1></Com1>
+    </template>
+    <!--<template id="com1">
+        <div>
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <select v-model="selected" multiple style="width: 50px">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+
+            <span>{{selected}}</span>
+        </div>
+        
+    </template>-->
+    <!--<template id="com1">
+        <div>
+            <input type="checkbox" v-model="toggle" true-value="a" v-bind:false-value="b">
+            <span>{{toggle}}</span>
+        </div>
+        
+    </template>-->
+    <template id="com1">
+        <div>
+            <input type="text" v-model.number.trim="text" @blur="fn()">
+            <span>{{text}}</span>
+        </div>
+        
+    </template>
+    <!--<script type="text/x-template" id="com1">
+        <div>
+            <input type="radio" name="radios" value="one" v-model="names">
+            <input type="radio" name="radios" value="two" v-model="names">
+            <span>{{names}}</span>
+        </div>
+
+    </script>-->
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+
+        },
+        components: {
+            com1: {
+                data() {
+                    return {
+                        a: "one",
+                        b: "two",
+                        names: "",
+                        selected: "",
+                        toggle: "",
+                        text: ""
+                    }
+                },
+                methods: {
+                    fn() {
+                        console.log(this.text)
+                    }
+                },
+                template: "#com1"
+            }
+        }
+    })
+</script>
+
+</html>

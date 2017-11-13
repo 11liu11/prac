@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    <template id="tem">
+       <div>
+                <Com1 :name="name" :age="age" class="aa"></Com1>
+       </div>
+    </template>
+
+    <template id="com">     
+              <div>
+                    <Last></Last>
+              </div>
+    </template>
+</body>
+<script>
+    // var com1 = {
+    //     template: "#com"
+    // }
+
+    var vm = new Vue({
+        el: "#app",
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            // age: "234"
+            age: 234
+
+        },
+
+        components: {
+            Com1: {
+                template: "#com",
+                props: {
+                    name: {
+                        type: String
+                    },
+                    age: {
+                        type: Number,
+                        required: true
+                    }
+                },
+                data() {
+                    return {
+                        middle: "middle"
+                    }
+                },
+                mounted() {
+                    console.log(this.$parent)
+                    console.log(this.$children)
+                },
+                components: {
+                    Last: {
+                        template: "<span>123</span>",
+                        data() {
+                            return {
+                                last: "123"
+                            }
+                        },
+                        mounted() {
+                            console.log(this.$root)
+                        }
+                    }
+                }
+            }
+
+        }
+    })
+</script>
+
+</html>

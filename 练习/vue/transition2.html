@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+    <link rel="stylesheet" type="" href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+    </div>
+
+    <template id="tem">
+        <div>
+            <transition @before-enter="beforeEnter" @enter="enter"  @leave="leave" appear mode="out-in">
+                <component :is="componentId"></component>
+                <div v-if="state" key="1">元素动画</div>
+                <div v-else key="2">元素二</div>
+            </transition>
+           <button @click="fn">点击</button>
+        </div>
+      
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            state: true,
+            arr: []
+        },
+        methods: {
+            fn() {
+                this.state = !this.state
+            },
+            beforeEnter(el) {
+                el.style.opacity = 0
+            },
+            done() {
+                console.log("ok")
+            },
+            enter(el, done) {
+                var _this = this
+                Velocity(el, {
+                    opacity: 1
+                }, {
+                    duration: 3000,
+                    complete: done
+                })
+
+            },
+            beforeLeave(el) {
+                // el.style.opacity = 1
+            },
+            leave(el, done) {
+                console.log(22)
+                var _this = this
+                Velocity(el, {
+                    opacity: 0
+                }, {
+                    duration: 3000,
+                    complete: done
+                })
+
+            }
+        },
+
+    })
+</script>
+
+</html>

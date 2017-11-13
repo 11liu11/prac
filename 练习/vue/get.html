@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="common/vue2.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>sfsf</div>
+    </div>
+
+    <template id="tem">
+        <div>
+           
+        </div>
+      
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        // el: "#app",
+        template: "#tem",
+        data: {
+            name: "zhangsan",
+            state: false,
+            arr: []
+        },
+        methods: {
+            fn() {
+                console.log(222)
+            }
+        },
+        computed: {
+            age: {
+                get() {
+                    // console.log(222)
+                    return this.name
+                },
+                set(val) {
+                    console.log(val)
+                    this.name = val
+                }
+            }
+        },
+        mounted() {
+            // console.log(this.age)
+            // this.name = "lisi"
+            // console.log(this.age)
+            this.age = "12"
+            console.log(this.age)
+
+        }
+
+    })
+    vm.$mount("#app")
+</script>
+
+</html>
